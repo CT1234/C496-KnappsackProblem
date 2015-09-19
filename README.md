@@ -8,7 +8,7 @@ the dynamic programming algorithm shown in class for this problem. The input wil
 ksinstance.txt. The first line will be one integer representing the weight limit and each subsequent line will be
 two integers seperated by whitespace representing one item.
 
-**Sample Interaction:**
+**Sample Interaction:**  
 
 Project 2: Solving Knapsack using Dynamic Programming
 Reading ksinstance.txt

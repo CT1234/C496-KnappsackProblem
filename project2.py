@@ -1,13 +1,13 @@
 print "Project 2: Solving Knapsack using Dynamic Programming"
 print "Reading ksinstance.txt"
 
-#importing data from text file
+#import & parse data from text file
 wordList = open('ksinstance.txt', "r")
 words = wordList.read().split()
 sackSize = int(words[0])
 totalItems = len(words) / 2
 
-#create item class, and create objects
+#create and instantiate items
 class Item:
 	weight = 0
 	value = 0
@@ -33,20 +33,22 @@ for index in range(0,totalItems):
 			valueArray[index][currentWeight-1] = itemsList[index].value
 			keepArray[index][currentWeight-1] = 0
 
-#0/1 knappsack algorithm, this algorithm has been slightly altered from the 
+#0/1 knappsack algorithm: this algorithm has been slightly altered from the 
 #examples, there are no 0 index columns and rows - it works the same way
 for index in range(0, totalItems):
 	for currentWeight in range (1, sackSize+1):
-
+		
 		indexWeight = currentWeight - 1
 		currentValue = valueArray[index][indexWeight]
 
 		if index == 0:
 			if currentValue > 0:
 				keepArray[index][indexWeight] = 1
+				
 		if index > 0 and valueArray[index][indexWeight] > 0:
 			remainder = currentWeight - itemsList[index].weight 
 		 	valueAbove = valueArray[index-1][indexWeight]
+		 	
 			if remainder == 0:
 				if valueAbove > currentValue:
 					valueArray[index][indexWeight] = valueAbove
@@ -61,9 +63,9 @@ for index in range(0, totalItems):
 				else: 
 					valueArray[index][indexWeight] = adjustedValue
 					keepArray[index][indexWeight] = 1
+					
 		elif index > 0 and valueArray[index][indexWeight] == 0:
 			valueArray[index][indexWeight] = valueArray[index-1][indexWeight]
-			
 
 maxValue = valueArray[totalItems-1][sackSize-1]
 itemsLeft = totalItems

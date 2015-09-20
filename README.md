@@ -1,4 +1,4 @@
-# COMP496-DynamicProgramming
+# C496-Knappsack Problem
 
 ##Project 2 Description##
 
